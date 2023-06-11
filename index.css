@@ -1,0 +1,78 @@
+*{
+    font-family: ;
+}
+
+.calendar {
+    width: 80%;
+    margin: auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+th {
+    background-color: #eee;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+tr td{
+    text-align: center;
+    align-items: center;
+    vertical-align: top;
+    width: 200px;
+    height: 150px;
+    
+}
+a{
+    display: block;
+    margin: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    transition: transform 0.1s;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    transform: translateY(-5px);
+    background-color: #ccc;
+}
+
+ul li{
+    background-color: yellow;
+    border-radius: 5px;
+}
+
