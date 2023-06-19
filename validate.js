@@ -1,55 +1,52 @@
-document.getElementsByTagName("form")[0].addEventListener('submit',function(e){
-    
-    const activity_name = document.getElementsByName("activity_name")[0];
-    const activity_date = document.getElementsByName("activity_date")[0];
-    const activity_level = document.getElementsByName("activity_level")[0];
-    const activity_timebegin = document.getElementsByName("activity_timebegin")[0];
-    const activity_timeend = document.getElementsByName("activity_timeend")[0];
-    const activity_location = document.getElementsByName("activity_location")[0];
+function validateForm() {
+    var activityName = document.forms["add_activity"]["activity_name"].value;
+    var activityDate = document.forms["add_activity"]["activity_date"].value;
+    var activityTimeBegin = document.forms["add_activity"]["activity_timebegin"].value;
+    var activityTimeEnd = document.forms["add_activity"]["activity_timeend"].value;
+    var activityLocation = document.forms["add_activity"]["activity_location"].value;
+    var uploadFile = document.forms["add_activity"]["upload"].value;
 
-    activity_name.removeAttribute("class");
-    activity_date.removeAttribute("class");
-    activity_level.removeAttribute("class");
-    activity_timebegin.removeAttribute("class");
-    activity_timeend.removeAttribute("class");
-    activity_location.removeAttribute("class");
-
-    var message = document.getElementById("errorMessage");
-    message.innerHTML = "";
-    
-    if (activity_name.value == "") {
-        message.innerHTML += "- Name masih kosong<br>";
-        nama.setAttribute("class", "warningBox");
+    // Validate activity_name field
+    if (activityName === "") {
+      displayErrorMessage("Nama Kegiatan harus diisi.");
+      return false;
     }
 
-    if (activity_date.value.trim() == "") {
-        message.innerHTML += "- Tanggal masih kosong<br>";
-        birthDate.setAttribute("class", "warningBox");
+    // Validate activity_date field
+    if (activityDate === "") {
+      displayErrorMessage("Tanggal Kegiatan harus diisi.");
+      return false;
     }
 
-    if (activity_level.value.trim() == "") {
-        message.innerHTML += "- Level masih kosong<br>";
-        email.setAttribute("class", "warningBox"); 
+    // Validate activity_timebegin field
+    if (activityTimeBegin === "") {
+      displayErrorMessage("Waktu Mulai harus diisi.");
+      return false;
     }
 
-    if (activity_timebegin.value.trim() == "") {
-        message.innerHTML += "- Waktu mulai masih kosong<br>";
-        password.setAttribute("class", "warningBox"); 
+    // Validate activity_timeend field
+    if (activityTimeEnd === "") {
+      displayErrorMessage("Waktu Berakhir harus diisi.");
+      return false;
     }
 
-    if (activity_timeend.value.trim() == "") {
-        message.innerHTML += "- Waktu berakhir masih kosong<br>";
-        email.setAttribute("class", "warningBox"); 
+    // Validate activity_location field
+    if (activityLocation === "") {
+      displayErrorMessage("Lokasi Kegiatan harus diisi.");
+      return false;
     }
 
-    if (activity_location.value.trim() == "") {
-        message.innerHTML += "- Lokasi masih kosong<br>";
-        password.setAttribute("class", "warningBox"); 
+    // Validate upload field
+    if (uploadFile === "") {
+      displayErrorMessage("Gambar Kegiatan harus dipilih.");
+      return false;
     }
 
-    if (message.innerHTML !== ""){
-        message.removeAttribute("hidden");
-        e.preventDefault();
-    }
+    return true; // Form is valid
+  }
 
-})
+  function displayErrorMessage(message) {
+    var errorMessage = document.getElementById("errorMessage");
+    errorMessage.innerText = message;
+    errorMessage.hidden = false;
+  }

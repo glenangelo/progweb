@@ -79,6 +79,6 @@
 </html>
 <script>
   const dump = "<?php echo $oldLevel?>"
-  var x = document.getElementsByName(dump)[0]; 
+  var x = document.getElementsByName(dump)[0] ; 
   x.setAttribute("selected","selected");
 </script>

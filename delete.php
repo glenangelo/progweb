@@ -34,23 +34,28 @@
 </style>
 <body>
     <?php
-    if ($oldPhoto=="") {
-        $sql = "DELETE FROM activity_list WHERE id=$id";
-            if(mysqli_query($conn, $sql)){
-                echo "<h4>Kegiatan Berhasil dihapus!</h4>";
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-            header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
-    }else{
-        if (unlink($oldPhoto)) { 
+    if ($oldTanggal<date('Y-m-d')) {
+        echo "<h4>Kegiatan sudah lewat, tidak dapat dihapus!</h4>";
+        header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
+    }else {
+        if ($oldPhoto=="") {
             $sql = "DELETE FROM activity_list WHERE id=$id";
-            if(mysqli_query($conn, $sql)){
-                echo "<h4>Kegiatan Berhasil dihapus!</h4>";
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                if(mysqli_query($conn, $sql)){
+                    echo "<h4>Kegiatan Berhasil dihapus!</h4>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+                header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
+        }else{
+            if (unlink($oldPhoto)) { 
+                $sql = "DELETE FROM activity_list WHERE id=$id";
+                if(mysqli_query($conn, $sql)){
+                    echo "<h4>Kegiatan Berhasil dihapus!</h4>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+                header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
             }
-            header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
         }
     }
     ?>

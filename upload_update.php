@@ -1,6 +1,13 @@
 <?php
     require "conn.php";
-    $id = $_GET["id"];
+    $id = $_GET["id"]; 
+    $sql = "SELECT gambar_kegiatan, tanggal_kegiatan FROM activity_list WHERE id=$id";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        $oldPhoto = $row["gambar_kegiatan"];
+        $oldTanggal = $row["tanggal_kegiatan"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +21,11 @@
 </head>
 <body>
 <?php
-        if (isset($_FILES["upload"]["name"])) {
+        if ($_POST["activity_date"] < date('Y-m-d')) {
+            echo "<h1>Tanggal sudah lewat</h1>";
+            header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
+            
+        }else if (isset($_FILES["upload"]["name"])) {
         $isValid = true;
         $fileType = strtolower(pathinfo($_FILES["upload"]["name"], PATHINFO_EXTENSION));
         
@@ -59,8 +70,13 @@
                 } else if (($_FILES["upload"]["size"]/1024/1024) > 1){
                     echo "<br> Status: Tidak boleh lebih dari 1MB.";
                     header("refresh: 3 ; url=$_SERVER[HTTP_REFERER]");
-                } else{
+                } 
+                else{
                 if (move_uploaded_file($_FILES["upload"]["tmp_name"], $uploadfile)) {
+                    if ($oldPhoto != "") {
+                        unlink($oldPhoto);
+                    }
+
                     $activity_name = $_POST["activity_name"];
                     $activity_date = $_POST["activity_date"];
                     $activity_level = $_POST["activity_level"];
