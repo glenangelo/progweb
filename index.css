@@ -1,58 +1,98 @@
-*{
-    font-family: ;
-}
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f3efe0;
+  }
+  
+  h1 {
+    color: #442422;
+    margin: 20px 0;
+  }
 
-.calendar {
+  #calendar {
     width: 80%;
-    margin: auto;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px #ccc;
+    margin: 20px auto;
+    border: 1px solid #222;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 1.5rem;
     padding: 1rem;
-}
-
-.header {
-    margin-bottom: 2rem;
+    border-radius: 5px;
+  }
+  
+  #calendar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #a39f91;
+  }
+  
+  #calendar h2 {
+    font-size: 18px;
     font-weight: bold;
-    text-align: center;
-    text-decoration: underline;
-}
-
-table {
+    margin: 0;
+    color: #222;
+  }
+  
+  #calendar table {
     width: 100%;
-}
-
-th,
-td {
+    border-collapse: collapse;
+  }
+  
+  #calendar th,
+  #calendar td {
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #222;
+  }
+  
+  #calendar th {
+    font-weight: bold;
+    background-color: #e0dfc8;
+  }
+  
+  #calendar td {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  #calendar .current-month {
+    background-color: #fff;
     border: 1px solid #ccc;
     text-align: center;
     padding: 0.5rem;
     border-radius: 3px;
-}
-
-th {
-    background-color: #eee;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    margin-bottom: 0.5rem;
-}
-
-tr td{
     text-align: center;
     align-items: center;
     vertical-align: top;
     width: 200px;
     height: 150px;
-    
-}
-a{
+  }
+  
+  #calendar .selected-day {
+    background-color: #442422;
+    color: #fff;
+  }
+  
+  #prev-btn,
+  #next-btn {
+    background-color: #442422;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #prev-btn:hover,
+  #next-btn:hover {
+    background-color: #5f5b50;
+  }
+
+  a{
     display: block;
     margin: 7px;
     margin-left: auto;
@@ -61,18 +101,31 @@ a{
     height: 35px;
     border-radius: 100%;
     transition: transform 0.1s;
-    font-size: 1.5rem;
-    color: black;
+    font-size: 1.2rem;
+    color: #442422;
     text-decoration: none;
-}
+    text-align: center;
+    padding: 5px 5px;
+  }
+  
+  a:hover{
+      transform: translateY(-5px);
+      background-color: #a39f91;
+  }
+  .ul_data {
+    list-style-type: none;
+    color: #442422;
+    padding: 0;
+    margin: 0;
+  }
 
-a:hover{
-    transform: translateY(-5px);
-    background-color: #ccc;
-}
+  .ul_data li {
+      margin-bottom: 0.5rem;
+      background-color: #e0dfc8;
+      border-radius: 5px;
+  }
 
-ul li{
-    background-color: yellow;
-    border-radius: 5px;
-}
-
+  .wanna_button{
+    width: 200px;
+    border: 1px solid#442422;
+  }
